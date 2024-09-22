@@ -3,7 +3,6 @@ export const groupTickets = (tickets, groupBy, users) => {
 
   switch (groupBy) {
     case "status":
-      // Group by status
       ["Backlog", "Todo", "In progress", "Done", "Cancelled"].map((status) => {
         groupedTickets[status] = tickets.filter(
           (ticket) => ticket.status === status
@@ -12,7 +11,6 @@ export const groupTickets = (tickets, groupBy, users) => {
       break;
 
     case "priority":
-      // Group by priority levels
       [4, 3, 2, 1, 0].map((priority) => {
         groupedTickets[priority] = tickets.filter(
           (ticket) => ticket.priority === priority
@@ -21,7 +19,6 @@ export const groupTickets = (tickets, groupBy, users) => {
       break;
 
     case "user":
-      // Group by users
       users.map((user) => {
         groupedTickets[user.name] = tickets.filter(
           (ticket) => ticket.userId === user.id

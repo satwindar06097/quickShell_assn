@@ -39,17 +39,16 @@ const TicketCard = ({ ticket, users, grouping }) => {
         {!(grouping === "priority") && (
           <img
             src={`icons_FEtask/${
-              priority === "0"
-                ? "No-priority.svg"
-                : priority === "1"
-                ? "Img - Low Priority.svg"
-                : priority === "2"
-                ? "Img - Medium Priority.svg"
-                : priority === "3"
-                ? "Img - High Priority.svg"
-                : "SVG - Urgent Priority grey.svg"
+              {
+                0: "No-priority.svg",
+                1: "Img - Low Priority.svg",
+                2: "Img - Medium Priority.svg",
+                3: "Img - High Priority.svg",
+                4: "SVG - Urgent Priority grey.svg",
+              }[priority] || "default-image.svg"
             }`}
-          ></img>
+            alt="priority-icon"
+          />
         )}
         <span>
           {tag.map((t) => (
