@@ -9,13 +9,13 @@ const TicketCard = ({ ticket, users, grouping }) => {
     <div className="ticket-card">
       <div className="ticketHeading">
         <span>{id}</span>
-        {!(grouping == "user") && <img src="user.jpg"></img>}
+        {!(grouping === "user") && <img src="user.jpg"></img>}
       </div>
       <div className="ticketTitle">
-        {!(grouping == "status") && (
+        {!(grouping === "status") && (
           <img
             src={`/icons_FEtask/${
-              status == "Todo"
+              status === "Todo"
                 ? "To-do.svg"
                 : status == "In progress"
                 ? "in-progress.svg"
@@ -26,16 +26,16 @@ const TicketCard = ({ ticket, users, grouping }) => {
         {title}
       </div>
       <div className="ticketInfo">
-        {!(grouping == "priority") && (
+        {!(grouping === "priority") && (
           <img
             src={`icons_FEtask/${
-              priority == "0"
+              priority === "0"
                 ? "No-priority.svg"
-                : priority == "1"
+                : priority === "1"
                 ? "Img - Low Priority.svg"
-                : priority == "2"
+                : priority === "2"
                 ? "Img - Medium Priority.svg"
-                : priority == "3"
+                : priority === "3"
                 ? "Img - High Priority.svg"
                 : "SVG - Urgent Priority grey.svg"
             }`}

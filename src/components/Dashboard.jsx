@@ -40,7 +40,7 @@ export const Dashboard = ({ tickets, users, grouping }) => {
                 alt={group}
               ></img>
               <span className="groupHeading">
-                {grouping == "priority" ? priorityTitles[group] : group}
+                {grouping === "priority" ? priorityTitles[group] : group}
               </span>
               <span className="groupCount">{tickets[group].length}</span>
             </span>
