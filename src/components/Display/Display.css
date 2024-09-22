@@ -29,9 +29,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-.display-card img {
-}
-
 .display-card span {
   display: flex;
   align-items: center;
@@ -76,6 +73,6 @@
 .ticket-container {
   padding: 20px;
   overflow-x: auto;
-  height: 90vh;
+  height: 87vh;
   background-color: #f0f0f0;
 }

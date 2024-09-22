@@ -1,15 +1,13 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Dashboard } from "./components/Dashboard";
-import GroupDropdown from "./Dropdowns/GroupDropdown";
-import SortDropdown from "./Dropdowns/SortDropdown";
+import { Dashboard } from "../Dashboard/Dashboard";
+import GroupDropdown from "../Dropdowns/GroupDropdown";
+import SortDropdown from "../Dropdowns/SortDropdown";
 import axios from "axios";
-import { groupTickets } from "./components/groupTickets";
-import { sortTickets } from "./components/sortTickets";
-import { IoIosArrowDown } from "react-icons/io";
+import { groupTickets } from "../../HelperFunctions/groupTickets";
+import { sortTickets } from "../../HelperFunctions/sortTickets";
 
-import "./components/Display.css";
+import "./Display.css";
 
-// API URL
 const api = "https://api.quicksell.co/v1/internal/frontend-assignment";
 
 const Display = () => {
@@ -24,7 +22,6 @@ const Display = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
 
-  // Fetch data
   const getData = async () => {
     try {
       const response = await axios.get(api);
@@ -40,22 +37,18 @@ const Display = () => {
     getData();
   }, []);
 
-  // Store grouping and sorting in localStorage
   useEffect(() => {
     localStorage.setItem("grouping", grouping);
     localStorage.setItem("sorting", sorting);
   }, [grouping, sorting]);
 
-  // Group and sort tickets
   const groupedTickets = groupTickets(tickets, grouping, users);
   const sortedTickets = sortTickets(groupedTickets, sorting);
 
-  // Toggle dropdown visibility
   const toggleDropdown = () => {
     setShowDropdown((prev) => !prev);
   };
 
-  // Close dropdown if clicked outside
   const handleClickOutside = (event) => {
     if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
       setShowDropdown(false);
@@ -76,7 +69,6 @@ const Display = () => {
 
   return (
     <div>
-      {/* Navbar with small card */}
       <div className="navbar">
         <div className="display-card" onClick={toggleDropdown}>
           <span>
@@ -87,21 +79,19 @@ const Display = () => {
         </div>
       </div>
 
-      {/* Dropdown Content */}
       {showDropdown && (
         <div className="dropdown" ref={dropdownRef}>
           <div>
             <span>Grouping</span>
-            <GroupDropdown setGrouping={setGrouping} />
+            <GroupDropdown grouping={grouping} setGrouping={setGrouping} />
           </div>
           <div>
             <span>Ordering</span>
-            <SortDropdown setSorting={setSorting} />
+            <SortDropdown setSorting={setSorting} sorting={sorting} />
           </div>
         </div>
       )}
 
-      {/* Tickets display */}
       <div className="ticket-container">
         <Dashboard tickets={sortedTickets} users={users} grouping={grouping} />
       </div>

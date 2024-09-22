@@ -4,12 +4,22 @@ import "./TicketCard.css";
 const TicketCard = ({ ticket, users, grouping }) => {
   const { id, title, userId, status, tag, priority } = ticket;
   console.log(grouping);
+  const user = users.find((user) => user.id === userId);
 
   return (
     <div className="ticket-card">
       <div className="ticketHeading">
         <span>{id}</span>
-        {!(grouping === "user") && <img src="user.jpg"></img>}
+        {!(grouping === "user") && (
+          <>
+            <img src="user.jpg"></img>
+            <span
+              className={`availability-indicator ${
+                user?.available ? "available" : "unavailable"
+              }`}
+            ></span>
+          </>
+        )}
       </div>
       <div className="ticketTitle">
         {!(grouping === "status") && (

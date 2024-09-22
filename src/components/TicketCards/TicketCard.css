@@ -77,3 +77,38 @@
   border-radius: 4px;
   padding: 2px 4px;
 }
+.ticket-card {
+  position: relative; /* Enable positioning for child elements */
+}
+
+.ticketHeading {
+  display: flex;
+  align-items: center; /* Center items vertically */
+  position: relative; /* Ensure the child elements are positioned relative to this */
+}
+
+.ticketHeading img {
+  width: 27px;
+  height: 27px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 8px; /* Space between user image and ID */
+}
+
+.availability-indicator {
+  width: 8px; /* Size of the dot */
+  height: 8px;
+  border-radius: 50%; /* Make it circular */
+  position: absolute; /* Position it absolutely */
+  bottom: 0; /* Align to the bottom */
+  right: 0; /* Align to the right */
+  border: 2px solid white; /* Optional: to give it a clean look */
+}
+
+.available {
+  background-color: #fcc008; /* Color for available users */
+}
+
+.unavailable {
+  background-color: grey; /* Color for unavailable users */
+}
